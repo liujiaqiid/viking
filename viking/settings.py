@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """
 Django settings for viking project.
 
@@ -23,20 +26,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$#v_d8w8bvfliz*kn6f(os^*5injb#pnc@pr9&pbbv(+78v@9('
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = False # True
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'cmdb.apps.CmdbConfig',
+    'wiki.apps.WikiConfig',
+    'django.contrib.admin', # The admin site. You’ll use it shortly.
+    'django.contrib.auth', # An authentication system.
+    'django.contrib.contenttypes', # A framework for content types.
+    'django.contrib.sessions', #  A session framework.
+    'django.contrib.messages', # A messaging framework.
+    'django.contrib.staticfiles', # A framework for managing static files
 ]
 
 MIDDLEWARE = [
@@ -75,8 +80,17 @@ WSGI_APPLICATION = 'viking.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # Defaul is sqlite3
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # Mysql
+        'ENGINE': 'django.db.backends.mysql',
+        #'ENGINE': 'mysql.connector.django',
+        'OPTIONS': {'charset': 'utf8mb4'},
+        'NAME': 'vikings',
+        'HOST': os.environ.get("viking_mysql_host"),
+        'USER': os.environ.get("viking_mysql_user"),
+        'PASSWORD': os.environ.get("viking_mysql_pwd"),
     }
 }
 
@@ -103,9 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans' #'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai' #'UTC'
 
 USE_I18N = True
 
@@ -117,4 +131,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/_static/'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE  = 'qiniustorage.backends.QiniuStaticStorage'
+
+# File Manage
+
+# DEFAULT_FILE_STORAGE= 'django.core.files.storage.FileSystemStorage'
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
+# MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+MEDIA_ROOT = '/_media/'
+# MEDIA_URL = '/_media/'
+
+# Qiniu Intro
+# Ref: http://django-qiniu-storage.readthedocs.io/zh_CN/latest/
+# qiniustorage.backends.QiniuStorage, 文件将存放在bucket的根目录下
+# qiniustorage.backends.QiniuMediaStorage, 文件将存放在bucket/MEDIA_ROOT目录下
+# qiniustorage.backends.QiniuStaticStorage, 文件将存放在bucket/STATIC_ROOT目录下

@@ -1,0 +1,50 @@
+## Install Local Dev Env On Mac
+
+- python 2.7
+- install virtualenv
+  - pip install virtualenv
+  - mkdir /dir/to/.env
+  - virtualenv /dir/to/.env
+  - source /dir/to/.env/bin/activate
+  - deactivate
+- install django
+  - pip install django==1.11
+  - pip list
+  - pip show django
+- install dependencies  
+  - pip install aumbry 
+- install mysql  
+  - brew install mysql 
+  - brew info mysql
+  - brew services start mysql || mysql.server start
+  - export PATH=$PATH:/usr/local/mysql/bin
+  - sudo /usr/local/mysql/bin/mysqld_safe
+    - (ENTER YOUR PASSWORD, IF NECESSARY)
+    - (PRESS CONTROL-Z)
+    - bg
+  - mysql -uroot
+  - CREATE DATABASE IF NOT EXISTS database DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+  - CREATE USER 'user'@'localhost';
+  - GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
+  - use mysql;
+  - UPDATE user SET password=PASSWORD("NEWPASSWORD") WHERE User='king';
+  - FLUSH PRIVILEGES;
+  - show databases;
+  - use database;
+  - show tables;
+  - mysql -uking -D viking -p
+  - pip install MySQL-python || pip install mysqlclient 
+  - sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib
+
+- Setup Project
+  - init 
+    - python manage.py migrate
+    - python manage.py createsuperuser
+    - python manage.py runserver
+  - migrate
+    - [ python manage.py makemigrations cmdb ]
+    - [ python manage.py sqlmigrate cmdb 0001 ]
+    - python manage.py makemigrations
+    - python manage.py migrate  
+  - repl
+    - python manage.py shell  

@@ -1,0 +1,13 @@
+<h1>Blog List</h1>
+{% if latest_blog_list %}
+    <ul>
+        {% for blog in latest_blog_list %}
+            <li>
+            <!--a href="/wiki/{{ blog.id }}/">{{ blog.title }}</a-->
+            <a href="{% url 'wikis:details' blog.id  %}">{{ blog.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}    
+    <p> No blog are available !!</p>
+{% endif %}    

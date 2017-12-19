@@ -1,0 +1,13 @@
+<h1>Blog Detail</h1>
+
+{% if blog %}
+    <h3> Title: {{ blog.title }} </h3>
+    <h5> SubTitle: {{ blog.subtitle }} </h3>
+    <p> Content: {{ blog.content }} </p>
+
+{% else %}    
+    <p> No blog are available !!</p>
+{% endif %}    
+
+<h1>Blog Comment</h1>
+

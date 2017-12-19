@@ -1,0 +1,12 @@
+<h1>Comment List</h1>
+{% if comment_list %}
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+            <a href="/wiki/{{ comment.blog_id }}/comments/">{{ comment.content }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}    
+    <p> No Comments are available !!</p>
+{% endif %}    

@@ -1,7 +1,14 @@
+# media files 
+_media/*
+
 # Secret config
 .secret.json
 logs
 *.log
+
+# db fils
+*.sqlite*
+# db.sqlite3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -59,14 +66,14 @@ coverage.xml
 local_settings.py
 
 # Flask stuff:
-#instance/
-#.webassets-cache
+instance/
+.webassets-cache
 
 # Scrapy stuff:
-#.scrapy
+.scrapy
 
 # Sphinx documentation
-#docs/_build/
+docs/_build/
 
 # PyBuilder
 target/
