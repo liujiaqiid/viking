@@ -59,7 +59,7 @@ ROOT_URLCONF = 'viking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, '_templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,6 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
 LANGUAGE_CODE = 'zh-hans' #'en-us'
+# LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Shanghai' #'UTC'
 
@@ -132,8 +133,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/_static/'
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # STATICFILES_STORAGE  = 'qiniustorage.backends.QiniuStaticStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "_static"),
+    # '/var/www/static/',
+]
 
 # File Manage
 

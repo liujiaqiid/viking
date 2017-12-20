@@ -1,10 +1,20 @@
+
+{% load static %}
+
+<head>
+    <img src="{% static 'viking/images/vikings_100_100.png' %}" alt="viking logo" />
+    <link rel="stylesheet" type="text/css" href="{% static 'viking/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'wiki/style.css' %}" />
+</head>
+
 <h1>Blog List</h1>
+
 {% if latest_blog_list %}
     <ul>
         {% for blog in latest_blog_list %}
             <li>
             <!--a href="/wiki/{{ blog.id }}/">{{ blog.title }}</a-->
-            <a href="{% url 'wikis:details' blog.id  %}">{{ blog.title }}</a>
+            <a href="{% url 'wiki:details' blog.id  %}">{{ blog.title }}</a>
             </li>
         {% endfor %}
     </ul>

@@ -4,6 +4,8 @@
         {% for comment in comment_list %}
             <li>
             <a href="/wiki/{{ comment.blog_id }}/comments/">{{ comment.content }}</a>
+            &nbsp;&nbsp; 
+            {{ comment.vote }}
             </li>
         {% endfor %}
     </ul>

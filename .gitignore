@@ -1,22 +1,63 @@
+###################################################
+# 1. Project IDE Gen Files
+.DS_Store
+# sdist generated
+MANIFEST
+
+###################################################
+# 2. About Test Files
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+
+###################################################
+# 3. User media Files 
 # media files 
 _media/*
 
+
+###################################################
+# 4. Sensitive Config Files 
 # Secret config
 .secret.json
+
+
+###################################################
+# 5. Log Files 
 logs
 *.log
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
 
+
+###################################################
+# 6. Tmp Data Files 
 # db fils
 *.sqlite*
-# db.sqlite3
 
-# Byte-compiled / optimized / DLL files
+
+###################################################
+# 7. Tmp Files: Build-Compile-Link 
+
+# Python 
 __pycache__/
 *.py[cod]
 *$py.class
 
 # C extensions
 *.so
+
+###################################################
+# 8. Other 
 
 # Distribution / packaging
 .Python
@@ -42,21 +83,6 @@ wheels/
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
 
 # Translations
 *.mo
@@ -115,5 +141,4 @@ ENV/
 .*~
 .*.swp
 
-# sdist generated
-MANIFEST
+

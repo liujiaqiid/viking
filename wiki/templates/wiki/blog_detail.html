@@ -1,13 +1,30 @@
-<h1>Blog Detail</h1>
+<html>
+    <h1>Blog Detail</h1>
 
 {% if blog %}
+
     <h3> Title: {{ blog.title }} </h3>
-    <h5> SubTitle: {{ blog.subtitle }} </h3>
+    <h5> SubTitle: {{ blog.subtitle }} </h5>
     <p> Content: {{ blog.content }} </p>
+
+    <h1>Blog Comment</h1>
+
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <form action="{% url 'wiki:comment' blog.id %}" method="post">
+
+        {% csrf_token %}
+
+        评论：  <input type="text" name="content" />
+        评分：  <input type="number" name="vote" value="0" min="-1" max="1"/>
+        <input type="submit" value="评论" />
+
+    </form>
 
 {% else %}    
     <p> No blog are available !!</p>
 {% endif %}    
 
-<h1>Blog Comment</h1>
-
+</html>
