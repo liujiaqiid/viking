@@ -1,8 +1,9 @@
 ## Viking
 
+系统自动化运维平台    
+
 ![image](http://on7nqcxcq.bkt.clouddn.com/vikings_v0.1_snapshot.png)
 
-平台自动化运维系统
 
 #### Pre Install
 1. Python == 2.7
