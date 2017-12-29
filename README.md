@@ -1,6 +1,6 @@
 ## Viking
 
-![image](http://on7nqcxcq.bkt.clouddn.com/vikings_1200_630.png?imageView2/2/w/100/h/100)
+![image](http://on7nqcxcq.bkt.clouddn.com/vikings_v0.1_snapshot.png)
 
 平台自动化运维系统
 
@@ -70,3 +70,5 @@ python manage.py migrate
 python manage.py createsuperuser
 
 ```
+
+![image](http://on7nqcxcq.bkt.clouddn.com/vikings_1200_630.png?imageView2/2/w/100/h/100)
