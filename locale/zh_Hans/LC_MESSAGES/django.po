@@ -1,0 +1,14 @@
+#
+#
+
+#: 
+msgid "Vikings DevOps Management System"
+msgstr "Vikings 自动化运维平台"
+
+#:
+msgid "English"
+msgstr "英语"
+
+#: 
+msgid "Simplified Chinese"
+msgstr "简体中文"

@@ -18,14 +18,26 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
+from django.views.static import serve # as staticserve
 
-# admin.site.site_header = 'Vikings For Devops'
+urlpatterns = []
 
-urlpatterns = [
+urlpatterns += [
+        #url(r'^media/(?P<path>.*)$', serve, {
+        #    'document_root': settings.MEDIA_ROOT, }),
+        #url(r'^static/(?P<path>.*)$', serve, {
+        #    'document_root': settings.STATIC_ROOT
+        #    }),
+        ]
+
+urlpatterns += [
     url(r'^admin/', admin.site.urls),
+    url(r'^manage/', include('manage.urls')),
     url(r'^cmdb/', include('cmdb.urls')),
     url(r'^wiki/', include('wiki.urls')),
     url(r'^$', RedirectView.as_view(url='/admin', permanent=True)),
 ]
+
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # if use static in local

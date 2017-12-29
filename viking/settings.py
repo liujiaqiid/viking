@@ -15,6 +15,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 import os
 
+from django.utils.translation import ugettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -34,6 +35,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'manage.apps.ManageConfig',
     'cmdb.apps.CmdbConfig',
     'wiki.apps.WikiConfig',
     'django.contrib.admin', # The admin site. You’ll use it shortly.
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'viking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '_templates'), ],
+        'DIRS': [], # os.path.join(BASE_DIR, '_templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,9 +115,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
+LANGUAGES = (
+    ('en-us', _('English')),
+    ('zh-hans', _('Simplified Chinese')),
+)
 
 LANGUAGE_CODE = 'zh-hans' #'en-us'
 # LANGUAGE_CODE = 'en-us'
@@ -132,11 +137,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = '/_static/'
+STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, "static") # '/_static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # STATICFILES_STORAGE  = 'qiniustorage.backends.QiniuStaticStorage'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "_static"),
+    os.path.join(BASE_DIR, "static"),
     # '/var/www/static/',
 ]
 
@@ -145,7 +151,7 @@ STATICFILES_DIRS = [
 # DEFAULT_FILE_STORAGE= 'django.core.files.storage.FileSystemStorage'
 DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
 # MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
-MEDIA_ROOT = '/_media/'
+MEDIA_ROOT = '/media/'
 # MEDIA_URL = '/_media/'
 
 # Qiniu Intro
