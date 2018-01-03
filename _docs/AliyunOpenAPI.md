@@ -1,0 +1,14 @@
+- [ ] CMDB打通[AliYun ECS Open API](https://help.aliyun.com/document_detail/25485.html?spm=5176.doc25486.6.840.4rDvne)
+    - DescribeInstances
+    - DescribeInstanceStatus
+    - DescribeInstanceVncUrl
+    - RebootInstance
+    - CreateInstance
+    - DeleteInstance
+    - StartInstance
+    - StopInstance
+    - DescribeRegions
+    - DescribeZones
+    - DescribeInstanceTypes 
+    - DescribeInstanceTypeFamilies
+ 

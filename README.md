@@ -34,8 +34,7 @@ pip install coverage
 #### TODO
 1. 工程优化
     1. [ ] Reusable App Package (pip)
-    2. [ ] Build Aliyun API    
-        - cmdb 打通服务器列表api
+    2. [ ] (Build Aliyun API)(docs/AliyunOpenAPI.md)    
     3. [ ] View Templates
         - bootstrap 
         - 确定模版UX方案
