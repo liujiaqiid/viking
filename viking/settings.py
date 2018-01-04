@@ -93,6 +93,7 @@ DATABASES = {
         'HOST': os.environ.get("viking_mysql_host"),
         'USER': os.environ.get("viking_mysql_user"),
         'PASSWORD': os.environ.get("viking_mysql_pwd"),
+        'PORT': '3366',
     }
 }
 

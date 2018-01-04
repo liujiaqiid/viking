@@ -141,5 +141,6 @@ ENV/
 # vim history & tmp files
 .*~
 .*.swp
-
+.idea/
+gitadd.sh
 
