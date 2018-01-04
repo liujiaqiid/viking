@@ -95,6 +95,7 @@ DATABASES = {
         'PASSWORD': os.environ.get("viking_mysql_pwd"),
         'PORT': '3366',
     }
+
 }
 
 
