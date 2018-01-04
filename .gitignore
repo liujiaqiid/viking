@@ -28,6 +28,7 @@ _media/*
 # 4. Sensitive Config Files 
 # Secret config
 .secret.json
+_*config.json
 
 
 ###################################################

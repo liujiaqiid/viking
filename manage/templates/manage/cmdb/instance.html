@@ -4,38 +4,17 @@
     <title>Vikings | 主机列表</title>
 {% endblock %}
 
-{% block hostlist %}active{% endblock %}
+{% block instancelist %}active{% endblock %}
 
 {% block body %}
     <div class="tpl-content-wrapper">
             <div class="tpl-portlet-components">
                 <div class="portlet-title">
                     <div class="caption font-green bold">
-                        <span class="am-icon-code"></span> 云主机信息
+                        <span class="am-icon-code"></span> &nbsp; {{indexname}} 
                     </div>
                 </div>
                 <div class="tpl-block">
-                    <!--div class="am-g">
-                        <div class="am-u-sm-12 am-u-md-6">
-                            <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <a href="/manager/add_host">
-                                    <button type="button" class="am-btn am-btn-default am-btn-success">
-                                        <span class="am-icon-plus"></span> 新增
-                                    </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="am-u-sm-12 am-u-md-3">
-                            <div class="am-input-group am-input-group-sm">
-                                <input type="text" class="am-form-field">
-                                <span class="am-input-group-btn">
-                                <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="button"></button>
-                                </span>
-                            </div>
-                        </div>
-                    </div--!>
                     <div class="am-g">
                         <div class="am-u-sm-12">
                             <form class="am-form">
@@ -52,7 +31,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for item in server_list %}
+                                        {% for item in instance_list %}
                                         <tr>
                                             <td>{{ item.name }}</td>
                                             <td>{{ item.outer_ip}}</td>

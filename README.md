@@ -8,7 +8,13 @@
 #### Pre Install
 1. Python == 2.7
 2. Mysql == 5.6
+```
+pip install MySQL-python || pip install mysqlclient
+```
 3. Django == 1.11
+```
+pip install django==1.11
+```
 4. aumbry - multi-type configuration library
 ```
 pip install aumbry

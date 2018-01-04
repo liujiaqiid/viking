@@ -1,0 +1,57 @@
+{% extends 'manage/base.html' %}
+
+{% block title %}
+    <title>Vikings | Iaas账户列表</title>
+{% endblock %}
+
+{% block iaaslist %}active{% endblock %}
+
+{% block body %}
+    <div class="tpl-content-wrapper">
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> &nbsp; {{indexname}} 
+                    </div>
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-type">账户编号</th>
+                                            <th class="table-title">账户名称</th>
+                                            <th class="table-type">服务提供商</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in iaas_list %}
+                                        <tr>
+                                            <td>{{ item.id }}</td>
+                                            <td>{{ item.name }}</td>
+                                            <td>{{ item.sp }}</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="/manage/regionlist/?iaas={{ item.id }}&index={{item.name}}&sp={{ item.sp }}">
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">查看地区</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                               <hr>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+        </div>
+{% endblock %}

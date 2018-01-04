@@ -9,5 +9,8 @@ urlpatterns = [
     url(r'^index/', views.index, name='index'),
     url(r'^login/', views.login, name='login'),
     url(r'^register/', views.register, name='register'),
-    url(r'^serverlist/', views.hostlist, name='hostList'),
+    url(r'^iaaslist/', views.iaaslist, name='iaasList'),
+    url(r'^regionlist/', views.regionlist, name='regionList'),
+    url(r'^zonelist/', views.zonelist, name='zoneList'),
+    url(r'^instancelist/', views.instancelist, name='instanceList'),
     ]

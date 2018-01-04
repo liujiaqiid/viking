@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import hashlib
+import json
 from django.shortcuts import render, HttpResponseRedirect
 from .models import *
-from cmdb.models import Server
+from cmdb.models import Iaas, Region, Zone, Instance
+import manage.helpers.aliyun_open_api as AliAPI
+
+def _load_aliyun_config():
+    with open('config/_aliyun_config.json') as fp:
+        config = json.loads(fp.read())
+    return config
 
 def _hash_password(password):
     '''md5加密
@@ -82,7 +89,56 @@ def login(req):
         return render(req, 'manage/login.html', locals())
 
 @_login_check
-def hostlist(req):#主机列表信息
+def iaaslist(req):# 平台管理的iaas账户列表
     username = req.COOKIES.get('name', '')
-    server_list = Server.objects.all()
-    return render(req, 'manage/hostlist.html', locals())
+    indexname = 'Iaas 账户信息'
+    iaas_list = Iaas.objects.all()
+    return render(req, 'manage/cmdb/iaas.html', locals())
+
+def _is_aliyun(sp):
+    return sp == 'aliyun'
+
+@_login_check
+def regionlist(req):#主机列表信息
+    username = req.COOKIES.get('name', '')
+    iaas = req.GET['iaas']
+    sp = req.GET['sp']
+    index = req.GET['index']
+    indexname = index + ' / 地区列表'
+    # print("iaas is %s" % iaas)
+    if _is_aliyun(sp):
+        print("aliyun sp")
+        regions = AliAPI.ecs_region_list_request()
+        region_list = json.loads(regions)['Regions']['Region']
+        return render(req, 'manage/cmdb/ali_region.html', locals())
+    else:
+        region_list = Region.objects.values('id','name','iaas__id','iaas__name', 'iaas__sp' ).filter(iaas__id=iaas)[:50]
+    # print("region list %s" % region_list.query)
+        return render(req, 'manage/cmdb/region.html', locals())
+
+@_login_check
+def zonelist(req):#主机列表信息
+    username = req.COOKIES.get('name', '')
+    region = req.GET['region']
+    sp = req.GET['sp']
+    index = req.GET['index']
+    indexname = index + ' / 分组列表'
+    print("region is %s" % region)
+    if _is_aliyun(sp):
+        print("aliyun sp")
+        zones = AliAPI.ecs_zone_list_request(region)
+        zone_list = json.loads(zones)['Zones']['Zone']
+        return render(req, 'manage/cmdb/ali_zone.html', locals())
+    else:
+        zone_list = Zone.objects.values('id', 'name', 'region__id', 'region__name').filter(region__id=region)[:50]
+        return render(req, 'manage/cmdb/zone.html', locals())
+
+@_login_check
+def instancelist(req):#主机列表信息
+    username = req.COOKIES.get('name', '')
+    zone = req.GET['zone']
+    index = req.GET['index']
+    indexname = index + ' / 主机列表'
+    print("zone is %s" % zone)
+    instance_list = Instance.objects.filter(zone__id=zone)[:50]
+    return render(req, 'manage/cmdb/instance.html', locals())

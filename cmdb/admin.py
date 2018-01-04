@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Iaas, Zone, Server
+from .models import Iaas, Region, Zone, Instance
 
 admin.site.site_header = _("Vikings DevOps Management System")
 admin.site.site_title = _("Vikings DevOps Management System")
@@ -11,4 +11,5 @@ admin.site.site_url = ""
 
 admin.site.register(Iaas)
 admin.site.register(Zone)
-admin.site.register(Server)
+admin.site.register(Region)
+admin.site.register(Instance)

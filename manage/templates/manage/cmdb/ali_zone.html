@@ -1,0 +1,56 @@
+{% extends 'manage/base.html' %}
+
+{% block title %}
+    <title>Vikings | 主机列表</title>
+{% endblock %}
+
+{% block zonelist %}active{% endblock %}
+{% load manage_extras %}
+
+{% block body %}
+    <div class="tpl-content-wrapper">
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span>&nbsp; {{indexname}} 
+                    </div>
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-type">分组编号</th>
+                                            <th class="table-title">分组名称</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in zone_list %}
+                                        <tr>
+                                            <td>{{ item.ZoneId }}</td>
+                                            <td>{{ item.LocalName }}</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="/manage/instancelist/?zone={{ item.ZoneId }}&index={{ index|addstr:item.LocalName }}&sp={{ sp }}">
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">主机列表</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                               <hr>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+        </div>
+{% endblock %}
