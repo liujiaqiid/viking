@@ -33,6 +33,11 @@ pip install coverage
 ```
 
 #### How To Run 
+1. Create aliyun config 
+```
+mkdir manage/config
+vim manage/config/_aliyun_config.json
+```
 
 #### Milestone 
 1. CMDB 资产管理

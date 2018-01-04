@@ -99,7 +99,7 @@ def _is_aliyun(sp):
     return sp == 'aliyun'
 
 @_login_check
-def regionlist(req):#主机列表信息
+def regionlist(req):#分区列表信息
     username = req.COOKIES.get('name', '')
     iaas = req.GET['iaas']
     sp = req.GET['sp']
@@ -117,11 +117,11 @@ def regionlist(req):#主机列表信息
         return render(req, 'manage/cmdb/region.html', locals())
 
 @_login_check
-def zonelist(req):#主机列表信息
+def zonelist(req):#分区列表信息
     username = req.COOKIES.get('name', '')
-    region = req.GET['region']
-    sp = req.GET['sp']
-    index = req.GET['index']
+    region = req.GET.get('region')
+    sp = req.GET.get('sp')
+    index = req.GET.get('index')
     indexname = index + ' / 分组列表'
     print("region is %s" % region)
     if _is_aliyun(sp):
