@@ -143,4 +143,5 @@ ENV/
 .*.swp
 .idea/
 gitadd.sh
+migrations/
 

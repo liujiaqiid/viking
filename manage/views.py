@@ -117,7 +117,7 @@ def regionlist(req):#分区列表信息
         return render(req, 'manage/cmdb/region.html', locals())
 
 @_login_check
-def zonelist(req):#分区列表信息
+def zonelist(req):#分组列表信息
     username = req.COOKIES.get('name', '')
     region = req.GET.get('region')
     sp = req.GET.get('sp')

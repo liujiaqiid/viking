@@ -98,7 +98,7 @@ def ecs_zone_list_request(region=DEFAULT_CONFIG['region_id']):
     return _do_action(_get_config(region), request)
 
 
-def ecs_instance_list_request(zone_id=''):
+def ecs_instance_list_request(region=DEFAULT_CONFIG['region_id'],zone_id=''):
     """ECS封装API-获取主机列表
     """
     # 创建 request，并设置参数

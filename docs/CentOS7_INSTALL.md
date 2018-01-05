@@ -13,34 +13,44 @@
   - pip show django
 - install dependencies  
   - pip install aumbry 
-- install mysql  
-  - brew install mysql 
-  - brew info mysql
-  - brew services start mysql || mysql.server start
-  - export PATH=$PATH:/usr/local/mysql/bin
-  - sudo /usr/local/mysql/bin/mysqld_safe
-    - (ENTER YOUR PASSWORD, IF NECESSARY)
-    - (PRESS CONTROL-Z)
-    - bg
+- [安装相关SDK](https://develop.aliyun.com/tools/sdk?#/python)
+```
+## 例如安装ecs相关api sdk
+pip install aliyun-python-sdk-ecs 
+```
+- Connect mysql  
   - mysql -uroot
-  - CREATE DATABASE IF NOT EXISTS database DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-  - CREATE USER 'user'@'localhost';
-  - GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
-  - use mysql;
-  - UPDATE user SET password=PASSWORD("NEWPASSWORD") WHERE User='king';
+  - CREATE DATABASE IF NOT EXISTS db_name DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+  - GRANT ALL PRIVILEGES ON db_name.* TO 'db_username'@'connect_IP' IDENTIFIED BY 'db_pwd';
+  ```
+    or：
+      - CREATE USER 'user'@'localhost';
+      - GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
+      - use mysql;
+      - UPDATE user SET password=PASSWORD("NEWPASSWORD") WHERE User='king';
+  ```  
   - FLUSH PRIVILEGES;
   - show databases;
   - use database;
   - show tables;
-  - mysql -uking -D viking -p
+  - mysql -u db_username -p -h db_host_IP --port 3306
   - pip install MySQL-python || pip install mysqlclient 
-  - 报错:
+  - 报错
   - _mysql.c:32:20: fatal error: Python.h: No such file or directory
   - 解决方法：
-  - centos： 
-    -yum install python-devel
-  - Ubuntu：
-    -apt-get install python-dev
+  - centos: 
+    - yum install python-devel
+  - Ubuntu: 
+    - apt-get install python-dev
+
+- 修改settings.py数据库链接方式
+    - python manage.py createsuperuser
+
+- runserver 
+    - pwd:\`pwd`/viking
+    - ./bin/start_pro_server.sh
+
+
 
 
 - Setup Project
