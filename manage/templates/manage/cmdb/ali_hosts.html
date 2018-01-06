@@ -1,0 +1,59 @@
+{% extends 'manage/base.html' %}
+
+{% block title %}
+    <title>Vikings | 主机列表</title>
+{% endblock %}
+
+{% block instancelist %}active{% endblock %}
+
+{% block body %}
+    <div class="tpl-content-wrapper">
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> &nbsp; {{indexname}} 
+                    </div>
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-type">实例名称</th>
+                                            <th class="table-type">内网IP地址</th>
+                                            <th class="table-title">外网IP地址</th>
+                                            <th class="table-type">状态</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in instance_list %}
+                                        <tr>
+                                            <td>{{ item.InstanceName }}</td>
+                                            <td>{{ item.InnerIpAddress.IpAddress}}</td>
+                                            <td>{{ item.PublicIpAddress.IpAddress}}</td>
+                                            <td>{{ item.Status }}</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="/manage/regionlist/?iaas={{ item.id }}&index={{item.name}}&sp={{ item.sp }}">
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">详细信息</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                               <hr>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+        </div>
+{% endblock %}

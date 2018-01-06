@@ -136,9 +136,18 @@ def zonelist(req):#分组列表信息
 @_login_check
 def instancelist(req):#主机列表信息
     username = req.COOKIES.get('name', '')
+    region = req.GET.get('region')
     zone = req.GET['zone']
+    sp = req.GET.get('sp')
     index = req.GET['index']
     indexname = index + ' / 主机列表'
+    print("region is %s" % region)
     print("zone is %s" % zone)
-    instance_list = Instance.objects.filter(zone__id=zone)[:50]
-    return render(req, 'manage/cmdb/instance.html', locals())
+    print("sp is %s" % sp)
+    if _is_aliyun(sp):
+        instances = AliAPI.ecs_instance_list_request('cn-beijing','cn-beijing-a')
+        instance_list = json.loads(instances)['Instances']['Instance']
+        return render(req, 'manage/cmdb/ali_hosts.html', locals())
+    else:
+        instance_list = Instance.objects.filter(zone__id=zone)[:50]
+        return render(req, 'manage/cmdb/ali_hosts.html', locals())
