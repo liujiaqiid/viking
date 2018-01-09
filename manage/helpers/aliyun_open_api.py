@@ -25,7 +25,7 @@ API_LIST = _types.enum( # API 列表
         DescribeInstanceStatus='DescribeInstanceStatus', # 查看机器状态列表
         )
 PAGE_NUM = '1'
-PAGE_SIZE = '20'
+PAGE_SIZE = '50'
 
 def _load_default_config():
     print("load config")

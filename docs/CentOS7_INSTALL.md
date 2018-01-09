@@ -4,9 +4,14 @@
 - install virtualenv
   - pip install virtualenv
   - mkdir /dir/to/.env
-  - virtualenv /dir/to/.env
-  - source /dir/to/.env/bin/activate
-  - deactivate
+  - virtualenv /dir/to/.env (创建虚拟环境)
+  - source /dir/to/.env/bin/activate(进入虚拟环境)
+  - deactivate (退出虚拟环境)
+- 安装依赖
+  - pip install -r requirements.txt -i https://pypi.doubanio.com/  
+
+
+(OR)
 - install django
   - pip install django==1.11
   - pip list

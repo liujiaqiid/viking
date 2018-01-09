@@ -128,6 +128,8 @@ def zonelist(req):#分组列表信息
         print("aliyun sp")
         zones = AliAPI.ecs_zone_list_request(region)
         zone_list = json.loads(zones)['Zones']['Zone']
+        for zone in zone_list:
+            zone['regionId']=region
         return render(req, 'manage/cmdb/ali_zone.html', locals())
     else:
         zone_list = Zone.objects.values('id', 'name', 'region__id', 'region__name').filter(region__id=region)[:50]
@@ -136,18 +138,25 @@ def zonelist(req):#分组列表信息
 @_login_check
 def instancelist(req):#主机列表信息
     username = req.COOKIES.get('name', '')
-    region = req.GET.get('region')
+    region = req.GET.get('regionId')
     zone = req.GET['zone']
+    localName = req.GET['LocalName']
     sp = req.GET.get('sp')
     index = req.GET['index']
-    indexname = index + ' / 主机列表'
-    print("region is %s" % region)
-    print("zone is %s" % zone)
-    print("sp is %s" % sp)
+    indexname = localName + ' / 主机列表'
+    # print("regionid is %s" % region)
+    # print("zoneid is %s" % zone)
+    # print("sp is %s" % sp)
+    # print("localName is %s" % localName)
+    # print("index is %s" % index)
+    # print("indexname is %s" % indexname)
     if _is_aliyun(sp):
-        instances = AliAPI.ecs_instance_list_request('cn-beijing','cn-beijing-a')
+        instances = AliAPI.ecs_instance_list_request(region,zone)
         instance_list = json.loads(instances)['Instances']['Instance']
+        for ins in instance_list:
+            ins['LocalName'] = localName;
+            print instance_list;
         return render(req, 'manage/cmdb/ali_hosts.html', locals())
     else:
-        instance_list = Instance.objects.filter(zone__id=zone)[:50]
-        return render(req, 'manage/cmdb/ali_hosts.html', locals())
+        asset_list = Instance.objects.all()[:50]
+        return render(req, 'manage/cmdb/instance.html', locals())

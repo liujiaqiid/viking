@@ -22,18 +22,24 @@
                                     <thead>
                                         <tr>
                                             <th class="table-type">实例名称</th>
-                                            <th class="table-type">内网IP地址</th>
-                                            <th class="table-title">外网IP地址</th>
+                                            <th class="table-type">区域</th>
+                                            <th class="table-type">IP</th>
                                             <th class="table-type">状态</th>
-                                            <th class="table-set">操作</th>
+                                            <th class="table-type">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for item in instance_list %}
                                         <tr>
-                                            <td>{{ item.InstanceName }}</td>
-                                            <td>{{ item.InnerIpAddress.IpAddress}}</td>
-                                            <td>{{ item.PublicIpAddress.IpAddress}}</td>
+                                            <td>{{ item.InstanceId }}<br>{{ item.InstanceName }}</td>
+                                            <td>{{ item.LocalName }}</td>
+                                            <td>
+                                                {% if item.InstanceNetworkType == "classic" %}
+                                                    内:{{ item.InnerIpAddress.IpAddress.0}}<br>外:{{ item.PublicIpAddress.IpAddress.0 }}
+                                                {% else %}
+                                                    内:{{ item.VpcAttributes.PrivateIpAddress.IpAddress.0}}<br>外:{{ item.EipAddress.IpAddress }}
+                                                {% endif %}
+                                            </td>
                                             <td>{{ item.Status }}</td>
                                             <td>
                                                 <div class="am-btn-toolbar">
