@@ -3,6 +3,8 @@
 .DS_Store
 # sdist generated
 MANIFEST
+# pycharm
+.idea/
 
 ###################################################
 # 2. About Test Files
@@ -79,6 +81,10 @@ wheels/
 .installed.cfg
 *.egg
 
+# Make magration on local server
+gitadd.sh
+migrations/
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -141,7 +147,3 @@ ENV/
 # vim history & tmp files
 .*~
 .*.swp
-.idea/
-gitadd.sh
-migrations/
-
