@@ -146,7 +146,7 @@ def instancelist(req):#主机列表信息
     indexname = localName + ' / 主机列表'
     # print("regionid is %s" % region)
     # print("zoneid is %s" % zone)
-    # print("sp is %s" % sp)
+    print("sp is %s" % sp)
     # print("localName is %s" % localName)
     # print("index is %s" % index)
     # print("indexname is %s" % indexname)
