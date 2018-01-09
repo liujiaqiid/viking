@@ -90,8 +90,12 @@ DATABASES = {
         #'ENGINE': 'mysql.connector.django',
         'OPTIONS': {'charset': 'utf8mb4'},
         'NAME': 'vikings',
+        # 'HOST': os.environ.get("viking_mysql_host"),
+        # 'USER': os.environ.get("viking_mysql_user"),
+        # 'PASSWORD': os.environ.get("viking_mysql_pwd"),
         'HOST': os.environ.get("viking_mysql_host"),
         'USER': os.environ.get("viking_mysql_user"),
+        'PORT': os.environ.get("viking_mysql_port"),
         'PASSWORD': os.environ.get("viking_mysql_pwd"),
     }
 }
