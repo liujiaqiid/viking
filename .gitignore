@@ -3,6 +3,8 @@
 .DS_Store
 # sdist generated
 MANIFEST
+# vsc 
+.vscode
 # pycharm
 .idea/
 

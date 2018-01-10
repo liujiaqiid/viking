@@ -100,10 +100,10 @@ def _is_aliyun(sp):
 
 @_login_check
 def regionlist(req):#分区列表信息
-    username = req.COOKIES.get('name', '')
-    iaas = req.GET['iaas']
-    sp = req.GET['sp']
-    index = req.GET['index']
+    # username = req.COOKIES.get('name', '')
+    iaas = req.GET.get('iaas', '')
+    sp = req.GET.get('sp', '') # ['sp']
+    index = req.GET.get('index', '') # ['index']
     indexname = index + ' / 地区列表'
     # print("iaas is %s" % iaas)
     if _is_aliyun(sp):
@@ -119,9 +119,9 @@ def regionlist(req):#分区列表信息
 @_login_check
 def zonelist(req):#分组列表信息
     username = req.COOKIES.get('name', '')
-    region = req.GET.get('region')
-    sp = req.GET.get('sp')
-    index = req.GET.get('index')
+    region = req.GET.get('region', '')
+    sp = req.GET.get('sp', '')
+    index = req.GET.get('index', '')
     indexname = index + ' / 分组列表'
     print(("region is %s" % region))
     if _is_aliyun(sp):
@@ -137,25 +137,19 @@ def zonelist(req):#分组列表信息
 
 @_login_check
 def instancelist(req):#主机列表信息
-    username = req.COOKIES.get('name', '')
-    region = req.GET.get('regionId')
-    zone = req.GET['zone']
-    localName = req.GET['LocalName']
-    sp = req.GET.get('sp')
-    index = req.GET['index']
-    indexname = localName + ' / 主机列表'
-    # print("regionid is %s" % region)
-    # print("zoneid is %s" % zone)
-    print(("sp is %s" % sp))
-    # print("localName is %s" % localName)
-    # print("index is %s" % index)
-    # print("indexname is %s" % indexname)
+    # username = req.COOKIES.get('name', '')
+    region = req.GET.get('regionId', '')
+    zone = req.GET.get('zone', '') # ['zone']
+    local_name = req.GET.get('LocalName', '') # ['LocalName']
+    sp = req.GET.get('sp', '')
+    # index = req.GET.get('index', '') # ['index']
+    indexname = local_name + ' / 主机列表'
     if _is_aliyun(sp):
         instances = AliAPI.ecs_instance_list_request(region,zone)
         instance_list = json.loads(instances)['Instances']['Instance']
         for ins in instance_list:
-            ins['LocalName'] = localName;
-            print(instance_list);
+            ins['LocalName'] = local_name;
+            print instance_list;
         return render(req, 'manage/cmdb/ali_hosts.html', locals())
     else:
         asset_list = Instance.objects.all()[:50]
