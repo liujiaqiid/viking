@@ -3,14 +3,14 @@
 #
 # Iaas Account -> Region -> Zone -> Instance
 #
-from __future__ import unicode_literals
+
 from django.db import models
 from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 def enum(**enums):
-  return type(b'Enum', (), enums)
+  return type('Enum', (), enums)
 
 SP_NAME = enum(ALI='aliyun', UCLOUD='ucloud', QING='qingcloud', AWS='aws', JULIYE='juliye')
 SP_NAME_CHOICE = (
@@ -75,7 +75,7 @@ class Region(models.Model):
   服务器地域分组
   """
   id = models.AutoField(_('region id'), primary_key=True)
-  iaas = models.ForeignKey(Iaas, verbose_name='IAAS', null=True, blank=True)
+  iaas = models.ForeignKey(Iaas, on_delete=True, verbose_name='IAAS', null=True, blank=True)
   name = models.CharField(_('region name'), max_length=20)
   def __str__(self):
     return self.name
@@ -87,7 +87,7 @@ class Zone(models.Model):
   服务器管理分组
   """
   id = models.AutoField('zone id', primary_key=True)
-  region = models.ForeignKey(Region, verbose_name=_('REGION'), null=True, blank=True)
+  region = models.ForeignKey(Region, on_delete=True, verbose_name=_('REGION'), null=True, blank=True)
   name = models.CharField(_('zone name'), max_length=20)
   def __str__(self):
     return self.name
@@ -100,7 +100,7 @@ class Instance(models.Model):
   """
   id = models.AutoField(_('instance id'), primary_key=True)
   name = models.CharField(_('instance name'), max_length=50)
-  zone = models.ForeignKey(Zone, verbose_name=_('ZONE'), null=True, blank=True)
+  zone = models.ForeignKey(Zone, on_delete=True, verbose_name=_('ZONE'), null=True, blank=True)
   cpu_type = models.CharField(_('cpu type'), max_length=50, choices=CPU_TYPE_CHOICE, default=CPU_TYPE.ENTRY)
   cpu_core = models.IntegerField('cpu core number', choices=CPU_NUM_CHOICE, default=CPU_NUM.CORE1)
   os_type = models.CharField('os type', max_length=50, choices=OS_TYPE_CHOICE, default=OS_TYPE.CENTOS)

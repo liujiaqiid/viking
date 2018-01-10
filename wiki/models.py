@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.db import models
 from django.utils import timezone
@@ -10,7 +10,7 @@ import datetime
 # Create your models here.
 
 def enum(**enums):
-    return type(b'Enum', (), enums)
+    return type('Enum', (), enums)
 
 VOTE = enum(DEF=0, ZAN=1, CAI=-1)
 VOTE_CHOICE = (
@@ -44,7 +44,7 @@ class Blog(models.Model):
 class Comment(models.Model):
 
     id = models.AutoField('comment id', primary_key=True)
-    blog = models.ForeignKey(Blog, verbose_name='Blog', null=True, blank=True)
+    blog = models.ForeignKey(Blog, on_delete=True, verbose_name='Blog', null=True, blank=True)
     content = models.CharField('comment content', max_length=200)
     vote = models.IntegerField('vote score', choices=VOTE_CHOICE, default=VOTE.DEF)
     created_date = models.DateTimeField('blog created', editable=False, default=timezone.now)

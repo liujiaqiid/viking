@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 import hashlib
 import json
 from django.shortcuts import render, HttpResponseRedirect
@@ -123,7 +123,7 @@ def zonelist(req):#分组列表信息
     sp = req.GET.get('sp', '')
     index = req.GET.get('index', '')
     indexname = index + ' / 分组列表'
-    print("region is %s" % region)
+    print(("region is %s" % region))
     if _is_aliyun(sp):
         print("aliyun sp")
         zones = AliAPI.ecs_zone_list_request(region)

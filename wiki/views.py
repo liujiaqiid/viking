@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # 通用view模版
 #
-from __future__ import unicode_literals
+
 
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
