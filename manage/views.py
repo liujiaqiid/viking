@@ -12,11 +12,12 @@ def _load_aliyun_config():
         config = json.loads(fp.read())
     return config
 
-def _hash_password(password):
+def _hash_password(password=''):
     '''md5加密
     :param password:
     :return: 加密后的字符串
     '''
+    password = password.encode('utf-8')
     md5 = hashlib.md5()
     md5.update(password)
     return md5.hexdigest()
@@ -149,7 +150,7 @@ def instancelist(req):#主机列表信息
         instance_list = json.loads(instances)['Instances']['Instance']
         for ins in instance_list:
             ins['LocalName'] = local_name;
-            print instance_list;
+            print(instance_list);
         return render(req, 'manage/cmdb/ali_hosts.html', locals())
     else:
         asset_list = Instance.objects.all()[:50]

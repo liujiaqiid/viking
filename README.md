@@ -6,7 +6,8 @@
 
 #### Pre Install
 1. Python==3.6
-2. Mysql(mariaDB) == 5.6
+2. Mysql(mariaDB)==5.6
+3. Virturalenv==15
 3. [Lib Dependencies](./docs/Dependencies.md) 
 
 #### How To Run 

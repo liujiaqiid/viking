@@ -1,21 +1,28 @@
 # This is the freezed dependencies, Init by 'pip freeze'
-# If you want add more dep. Please add here and your comments.
+# If you want add more deps Please add as below.
 
-# Required Lib
-aliyun-python-sdk-core-v3==2.5.5 # 阿里云OpenAPI核心SDK
-aliyun-python-sdk-ecs==4.6.0 # 阿里云OpenAPI ECS相关SDK
+
+########## Required Lib
+# 阿里云OpenAPI, require: pycrypto
+aliyun-python-sdk-core-v3==2.5.5 # 核心SDK
+aliyun-python-sdk-ecs==4.6.0 # ECS相关SDK
+# 测试相关
 coverage==4.4.2 # 测试覆盖率
-Django==2.0.1 # Web框架
-django-qiniu-storage==2.3.1 # 七牛CDN存取驱动
-Pillow==5.0.0 # 图片处理 Python Imaging Library
-mysqlclient==1.3.12 # Mysql客户端驱动
-# pycrypto==2.6.1 # Python Cryptography Toolkit
-# requests==2.18.4 # Python HTTP for Humans
+# Django相关, require: pytz
+Django==2.0.1 
+# 七牛CDN存取驱动, require: qiniu, urllib3, chardet, requests, six, chardet, certifi
+django-qiniu-storage==2.3.1  
+# 图片处理 Python Imaging Library
+Pillow==5.0.0 
+# Mysql客户端驱动
+mysqlclient==1.3.12 
 
-# Optional Lib 
-pur==4.0.3 # 版本管理（生产环境不建议使用） Update packages in a requirements.txt file to latest versions.
 
-# Dev Tools
+########## Optional Lib 
+#pur==4.0.3 # 版本管理（生产环境不建议使用） Update packages in a requirements.txt file to latest versions.
+
+
+########## Dev Tools
 # guessit==2.1.4 # 视频信息推断 a library for guessing information from video filenames
 # idna==2.6 # Internationalized Domain Names in Applications
 # pike==0.1.1 # Lightweight plugin management system for Python
@@ -32,3 +39,5 @@ pur==4.0.3 # 版本管理（生产环境不建议使用） Update packages in a 
 # python-dateutil==2.6.1 # Extensions to the standard Python datetime module
 # pytz==2017.3 # World timezone definitions, modern and historical
 # qiniu==7.2.0
+# pycrypto==2.6.1 # Python Cryptography Toolkit
+# requests==2.18.4 # Python HTTP for Humans
