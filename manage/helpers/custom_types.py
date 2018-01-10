@@ -7,4 +7,4 @@
 def enum(**enums):
     """枚举类型
     """
-    return type(b'Enum', (), enums)
+    return type('Enum', (), enums)

@@ -3,18 +3,20 @@
 #
 # 阿里云开放API工具
 #
-from __future__ import unicode_literals
+
 import json
 from aliyunsdkcore.client import AcsClient
 # from aliyunsdkcore.request import CommonRequest
-import aliyunsdkcore.request as AliReq
+# import aliyunsdkcore.request as AliReq
+from aliyunsdkcore.request import AcsRequest as AliReq
+import aliyunsdkcore.http.protocol_type as ptypes
 from aliyunsdkecs.request.v20140526 import DescribeRegionsRequest
 from aliyunsdkecs.request.v20140526 import DescribeZonesRequest
 from aliyunsdkecs.request.v20140526 import DescribeInstancesRequest
 from aliyunsdkecs.request.v20140526 import DescribeInstanceStatusRequest
 from aliyunsdkecs.request.v20140526 import DescribeInstancesFullStatusRequest
 
-import custom_types as _types
+from . import custom_types as _types
 
 API_DEFAULT_VERSION = '2014-05-26'
 API_DEFAULT_DOMAIN = 'ecs.aliyuncs.com'
@@ -41,7 +43,7 @@ def _get_config(region=DEFAULT_CONFIG['region_id']):
     return config
 
 # 设置全局默认协议为https
-AliReq.set_default_protocol_type("https")
+# AliReq.set_protocol_type(,protocol_type=ptypes.HTTPS)
 
 def _start_client(config):
     client = AcsClient(
@@ -55,7 +57,7 @@ def _do_action(config, request):
         client = _start_client(config)
         response = client.do_action_with_exception(request)
     except Exception as e:
-        print('API Exception: %s' % e)
+        print(('API Exception: %s' % e))
         return ''
     return response
 

@@ -6,30 +6,24 @@
 
 
 #### Pre Install
-1. Python == 2.7
-2. Mysql == 5.6
+
+1. 通过pip 自动生成相关依赖(**新增依赖模块时,需要在工程根目录下再次执行该命令**)    
+
+  `pip freeze > requirement.txt`
+  
+2. 安装依赖
+
+  `pip install -r requirements.txt`
+  
+3. Mysql (mariaDB) == 5.6
+
+4. python>=3.6.2
+
+5. 升级依赖到最新
+
 ```
-pip install MySQL-python || pip install mysqlclient
-```
-3. Django == 1.11
-```
-pip install django==1.11
-```
-4. aumbry - multi-type configuration library
-```
-pip install aumbry
-```
-5. django-qiniu-storage
-```
-pip install django-qiniu-storage
-```
-6. Pillow
-```
-pip install Pillow
-```
-7. coverage
-```
-pip install coverage
+pip install pur
+pur -r requirements.txt
 ```
 
 #### How To Run 

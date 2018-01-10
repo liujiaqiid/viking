@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
@@ -29,7 +29,7 @@ class TitleFilter(admin.SimpleListFilter): #, latest_10_topic_list):
         """ 过滤方式
         """
         title = self.value()
-        print("query set ... %s" % title)
+        print(("query set ... %s" % title))
         if title:
             # return queryset.filter(title__contains = title)[:10]
             return queryset.filter(title__contains = title) #[:10]
