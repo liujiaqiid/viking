@@ -3,6 +3,7 @@
 .DS_Store
 # sdist generated
 MANIFEST
+.vscode
 
 ###################################################
 # 2. About Test Files
