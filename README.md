@@ -4,38 +4,26 @@
 
 ![image](http://on7nqcxcq.bkt.clouddn.com/vikings_v0.1_snapshot.png)
 
-
 #### Pre Install
-
-1. 通过pip 自动生成相关依赖(**新增依赖模块时,需要在工程根目录下再次执行该命令**)    
-
-  `pip freeze > requirement.txt`
-  
-2. 安装依赖
-
-  `pip install -r requirements.txt`
-  
-3. Mysql (mariaDB) == 5.6
-
-4. python>=3.6.2
-
-5. 升级依赖到最新
-
-```
-pip install pur
-pur -r requirements.txt
-```
+1. Python==3.6
+2. Mysql(mariaDB) == 5.6
+3. [Lib Dependencies](./docs/Dependencies.md) 
 
 #### How To Run 
+
 1. Create aliyun config 
 ```
 mkdir manage/config
 vim manage/config/_aliyun_config.json
 ```
 
-#### Milestone 
-1. CMDB 资产管理
-2. CI/CT 集成测试/开发
+2. Run Local
+```
+bin/start_dev_server.sh
+```
+
+#### Milestones 
+1. [Milestone V0.3](https://github.com/liujiaqiid/viking/milestone/2)
 
 #### TODO
 1. 工程优化
@@ -59,24 +47,8 @@ vim manage/config/_aliyun_config.json
 3. 自动化
 4. 虚拟化
 
-#### 常用命令
-```
-
-python -m django --version
-
-django-admin startproject mysite
-
-python manage.py runserver
-
-python manage.py startapp app
-
-python manage.py migrate
-
-python manage.py createsuperuser
-
-```
-
 ![image](http://on7nqcxcq.bkt.clouddn.com/vikings_1200_630.png?imageView2/2/w/100/h/100)
+
 #### 相关文档
 - [阿里云Open API](docs/AliyunOpenAPI.md)
 - [自动化运维平台RoadMap_201712](https://www.processon.com/view/link/5a4dc1f7e4b0c4ee141986b0)
