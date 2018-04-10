@@ -6,6 +6,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from .models import *
 from cmdb.models import Iaas, Region, Zone, Instance
 import manage.helpers.aliyun_open_api as AliAPI
+import subprocess
 
 def _load_aliyun_config():
     with open('config/_aliyun_config.json') as fp:
@@ -105,7 +106,7 @@ def regionlist(req):#分区列表信息
     iaas = req.GET.get('iaas', '')
     sp = req.GET.get('sp', '') # ['sp']
     index = req.GET.get('index', '') # ['index']
-    indexname = index + ' / 地区列表'
+    indexname = index + u' / 地区列表'
     # print("iaas is %s" % iaas)
     if _is_aliyun(sp):
         print("aliyun sp")
@@ -123,7 +124,7 @@ def zonelist(req):#分组列表信息
     region = req.GET.get('region', '')
     sp = req.GET.get('sp', '')
     index = req.GET.get('index', '')
-    indexname = index + ' / 分组列表'
+    indexname = index + u' / 分组列表'
     print(("region is %s" % region))
     if _is_aliyun(sp):
         print("aliyun sp")
@@ -144,7 +145,7 @@ def instancelist(req):#主机列表信息
     local_name = req.GET.get('LocalName', '') # ['LocalName']
     sp = req.GET.get('sp', '')
     # index = req.GET.get('index', '') # ['index']
-    indexname = local_name + ' / 主机列表'
+    indexname = local_name + u' / 主机列表'
     if _is_aliyun(sp):
         instances = AliAPI.ecs_instance_list_request(region,zone)
         instance_list = json.loads(instances)['Instances']['Instance']
@@ -155,3 +156,44 @@ def instancelist(req):#主机列表信息
     else:
         asset_list = Instance.objects.all()[:50]
         return render(req, 'manage/cmdb/instance.html', locals())
+
+@_login_check
+def auto_deploy_index(req):# auto deploy index page
+    current_user = req.COOKIES.get('name', '')
+    indexname = 'AutoM 自动化部署'
+    # TODO: find auto deploy tasks
+    # iaas_list = Iaas.objects.all()
+    return render(req, 'manage/autodeploy/index.html', locals())
+
+@_login_check
+def auto_deploy_repo(req):
+    repo = req.GET.get('repo', '')
+    topl = req.GET.get('topl', '')
+    cmd = '/home/devops/apps/viking-ansible/bin/run_prod.sh '
+    if (repo == 'storm'):
+        cmd += 'storm submit'
+        if (topl == 'searchindex'):
+            cmd += 'searchindex'
+        elif (topl == 'hdf_searchindex'):
+            cmd += 'hdf_searchindex'
+        else:
+            err_info = "Error: repo-storm submit unknown topl : " + topl
+            return render(req, 'manage/autodeploy/index.html', locals())
+    elif (repo == 'cms'):
+        err_info = "Error: repo-cms submit unknown topl : " + topl
+        return render(req, 'manage/autodeploy/index.html', locals())
+    else:
+        err_info = "Error: unknown repo : " + repo
+        return render(req, 'manage/autodeploy/index.html', locals())
+
+    # info = subprocess.call([cmd],shell=True)
+    stdinfo = subprocess.Popen([cmd],shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    if (stdinfo.stdout):
+        deploy_info = "<b> Deploy Info :</b> <br/>"
+        for line in stdinfo.stdout.readlines():
+            deploy_info += line + "<br/>"
+    if (stdinfo.stderr):
+        err_info = "<b> Error Info :</b> <br/>"
+        for line in stdinfo.stderr.readlines():
+            err_info += line + "<br/>"
+    return render(req, 'manage/autodeploy/index.html', locals())

@@ -44,7 +44,8 @@ class Blog(models.Model):
 class Comment(models.Model):
 
     id = models.AutoField('comment id', primary_key=True)
-    blog = models.ForeignKey(Blog, on_delete=True, verbose_name='Blog', null=True, blank=True)
+    # blog = models.ForeignKey(Blog, on_delete=True, verbose_name='Blog', null=True, blank=True)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     content = models.CharField('comment content', max_length=200)
     vote = models.IntegerField('vote score', choices=VOTE_CHOICE, default=VOTE.DEF)
     created_date = models.DateTimeField('blog created', editable=False, default=timezone.now)
