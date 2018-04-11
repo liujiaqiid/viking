@@ -1,0 +1,120 @@
+{% extends 'manage/base.html' %}
+
+{% block title %}
+    <title>Vikings | AutoM自动化部署 </title>
+{% endblock %}
+
+{% block iaaslist %}active{% endblock %}
+
+{% block body %}
+    <div class="tpl-content-wrapper">
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> &nbsp; {{indexname}} 
+                    </div>
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-type">项目名称</th>
+                                            <th class="table-title">目标服务器</th>
+                                            <th class="table-title">当前版本</th>
+                                            <th class="table-type">操作</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Storm_Topl_SearchIndex</td>
+                                            <td>Storm Cluster</td>
+                                            <td>None</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="/manage/autodeploy/deploy/?repo=storm&topl=searchindex">
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">版本部署</button>
+                                                        </a>
+                                            </td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="#" onclick='alert_to_do()'>
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">版本回退</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+ 
+                                        <tr>
+                                            <td>Storm_Topl_HDF_SearchIndex</td>
+                                            <td>Storm Cluster</td>
+                                            <td>None</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="/manage/autodeploy/deploy/?repo=storm&topl=hdf_searchindex">
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">版本部署</button>
+                                                        </a>
+                                            </td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="#" onclick='alert_to_do()'>
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">版本回退</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CMS</td>
+                                            <td>CMS Cluster</td>
+                                            <td>None</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="/manage/autodeploy/deploy/?repo=cms">
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">版本部署</button>
+                                                        </a>
+                                            </td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="#" onclick='alert_to_do()'>
+                                                            <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only">版本回退</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+ 
+                                    </tbody>
+                                </table>
+                               <hr>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-alert">
+                    <div class="tpl-content-scope">
+                        <div class="note note-info">
+                            <p style="font-family: 'Microsoft YaHei'"> 
+                            {{deploy_info}}
+                            </p>
+                        </div>
+                        <div class="note note-err">
+                            <p style="font-family: 'Microsoft YaHei'"> 
+                            {{error_info}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

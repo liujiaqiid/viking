@@ -658,6 +658,12 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
     color: #010407;
 }
 
+.note-err {
+    background-color: #f5f8fd;
+    border-color: #e40c14;
+    color: #010407;
+}
+
 .label-danger {
     background-color: #ed6b75;
 }

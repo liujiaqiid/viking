@@ -155,3 +155,7 @@ var pageData = {
         echartsC.setOption(optionC);
     }
 }
+
+var alert_to_do = function(){
+    alert("该功能正在开发中...")
+}

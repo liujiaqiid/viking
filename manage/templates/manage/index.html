@@ -8,7 +8,7 @@
 
     <div class="tpl-content-wrapper">
             <div class="tpl-content-page-title" style="text-align: center; height: 80px">
-                <strong>欢迎 {{ username }} 进入 Vikings 管理系统 </strong>(v0.1) 
+                <strong>欢迎 {{ username }} 进入 Vikings 管理系统 </strong>(v0.3) 
             </div>
             <div class="tpl-content-scope">
                 <div class="note note-info">
@@ -36,27 +36,28 @@
                     </div>
                 </div>
                 <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
-                    <div class="dashboard-stat red">
-                        <div class="visual">
-                            <i class="am-icon-bar-chart-o"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number"> TODO </div>
-                        </div>
-                        <a class="more" href="/manage/index"> 查看
-                    <i class="m-icon-swapright m-icon-white"></i>
-                </a>
-                    </div>
-                </div>
-                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
                     <div class="dashboard-stat green">
                         <div class="visual">
                             <i class="am-icon-keyboard-o"></i>
                         </div>
                         <div class="details">
-                            <div class="number"> TODO  </div>
+                            <div class="number"> 自动化部署 </div>
                         </div>
-                        <a class="more" href="/manage/index"> 查看
+                        <a class="more" href="/manage/autodeploy"> 查看
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat red">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> 数据统计 </div>
+                        </div>
+                        <a class="more" href="/manage/index" onclick='alert_to_do()'> 查看
                     <i class="m-icon-swapright m-icon-white"></i>
                 </a>
                     </div>
@@ -67,9 +68,9 @@
                             <i class="am-icon-file-o"></i>
                         </div>
                         <div class="details">
-                            <div class="number"> TODO </div>
+                            <div class="number"> 日志管理 </div>
                         </div>
-                        <a class="more" href="/manage/index"> 查看
+                        <a class="more" href="#" onclick='alert_to_do()'> 查看
                     <i class="m-icon-swapright m-icon-white"></i>
                 </a>
                     </div>

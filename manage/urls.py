@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^regionlist/', views.regionlist, name='regionList'),
     url(r'^zonelist/', views.zonelist, name='zoneList'),
     url(r'^instancelist/', views.instancelist, name='instanceList'),
+    url(r'^autodeploy/deploy/', views.auto_deploy_repo, name='auto_deploy'),
+    url(r'^autodeploy/', views.auto_deploy_index, name='auto_deploy_index'),
     ]
