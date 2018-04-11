@@ -171,7 +171,7 @@ def auto_deploy_repo(req):
     topl = req.GET.get('topl', '')
     cmd = '/home/devops/apps/viking-ansible/bin/run_prod.sh '
     if (repo == 'storm'):
-        cmd += 'storm submit'
+        cmd += 'storm submit '
         if (topl == 'searchindex'):
             cmd += 'searchindex'
         elif (topl == 'hdf_searchindex'):
@@ -189,11 +189,11 @@ def auto_deploy_repo(req):
     # info = subprocess.call([cmd],shell=True)
     stdinfo = subprocess.Popen([cmd],shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     if (stdinfo.stdout):
-        deploy_info = "<b> Deploy Info :</b> <br/>"
+        deploy_info = "Deploy Info :"
         for line in stdinfo.stdout.readlines():
-            deploy_info += line + "<br/>"
+            deploy_info += str(line)
     if (stdinfo.stderr):
-        err_info = "<b> Error Info :</b> <br/>"
+        err_info = "Error Info :"
         for line in stdinfo.stderr.readlines():
-            err_info += line + "<br/>"
+            err_info += str(line)
     return render(req, 'manage/autodeploy/index.html', locals())

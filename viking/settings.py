@@ -28,7 +28,7 @@ SECRET_KEY = '$#v_d8w8bvfliz*kn6f(os^*5injb#pnc@pr9&pbbv(+78v@9('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False # True
-DEBUG = True
+DEBUG = True 
 
 ALLOWED_HOSTS = ["*"]
 
@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         #'ENGINE': 'mysql.connector.django',
         'OPTIONS': {'charset': 'utf8mb4'},
-        'NAME': 'vikings',
+        'NAME': 'viking',
         # 'HOST': os.environ.get("viking_mysql_host"),
         # 'USER': os.environ.get("viking_mysql_user"),
         # 'PASSWORD': os.environ.get("viking_mysql_pwd"),
