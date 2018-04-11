@@ -32,16 +32,18 @@ bin/start_pro_server.sh
     + [x] 屏蔽dnat配置，网站服务迁移至内网
     + [x] storm.juliye.net 配置
     + [x] viking.juliye.net 配置
-    + [ ] cms python + vikings + ansible
     + [x] 服务器部署文档更新
-    + 优化调研
+    + [ ] cms python + vikings + ansible
+    + 功能&优化
         + [ ] 部署任务 数据结构设计 | 持久化
         + [ ] 部署任务 动态设置功能
         + [ ] 部署记录 ＋ 部署历史日志 持久化
         + [ ] 版本回退功能
         + [ ] 部署日志 输出文本 格式化
         + [ ] 部署日志 控制隐藏控件
-        + [ ] 部署操作过程中 提示 等待 || 实时输出日志
+        + [ ] 部署操作过程中 提示 等待 || 实时输出日志    
+    + 调研
+        + [ ] 调研Ansible Python API
         + [ ] 调研[django_web_ansible](https://github.com/yianjiajia/django_web_ansible)
         + [ ] 调研[AnsibleUI2](https://github.com/alaxli/AnsibleUI2) 
         + [ ] 调研[ansibleUI](https://github.com/stanleylst/ansibleUI)
