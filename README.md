@@ -34,7 +34,7 @@ bin/start_pro_server.sh
     + [x] viking.juliye.net 配置
     + [x] 服务器部署文档更新
     + [ ] cms python + vikings + ansible
-    + 功能&优化
+    + [ ] 功能&优化
         + [ ] 部署任务 数据结构设计 | 持久化
         + [ ] 部署任务 动态设置功能
         + [ ] 部署记录 ＋ 部署历史日志 持久化
