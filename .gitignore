@@ -149,3 +149,4 @@ ENV/
 # vim history & tmp files
 .*~
 .*.swp
+gitpush.sh
