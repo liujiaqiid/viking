@@ -100,6 +100,10 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 
+## 正式服务
+nohup python manage.py runserver &
+## 可以使用supervisord 守护
+
 ## 创建后台管理用户
 python manage.py createsuperuser
 
